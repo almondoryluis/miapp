@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest # Docs: https://github.com/actions/runner-images/#available-images
     steps:
       # 1. Clonar repositorio
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3  
 
       # 2. Configurar JDK
       - uses: actions/setup-java@v2
@@ -31,21 +31,27 @@ jobs:
 
       # 5. Construir APK
       - run: flutter build apk # construir un sólo APK para todas las ABI
-      # - run: flutter build apk --split-per-abi # construir un APK para cada ABI
-
       # Renombrar el APK
-      - run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/miapp-flutter.apk
+      - run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/miapp-flutter-$GITHUB_REF_NAME.apk
 
+      # 5. Construir APKs
+      # - run: flutter build apk --split-per-abi # construir un APK para cada ABI
+      # Renombrar los APKs
+      # - run: |
+      #     mv build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk build/app/outputs/flutter-apk/app-armeabi-v7a-release-$GITHUB_REF_NAME.apk
+      #     mv build/app/outputs/flutter-apk/app-arm64-v8a-release.apk build/app/outputs/flutter-apk/app-arm64-v8a-release-$GITHUB_REF_NAME.apk
+      #     mv build/app/outputs/flutter-apk/app-x86_64-release.apk build/app/outputs/flutter-apk/app-x86_64-release-$GITHUB_REF_NAME.apk
+      
       # Opcional: 
       # Construir el appbundle de la apk (para subir a Play Store)
       # - run: flutter build appbundle
 
-      # 6. Publicar release
+      # 6. Publicar entrega
       - uses: softprops/action-gh-release@v1
         with:
           files:
-            build\app\outputs\flutter-apk\miapp-flutter.apk
+            build/app/outputs/flutter-apk/miapp-flutter-$GITHUB_REF_NAME.apk
         #  files: |
-        #    build\app\outputs\flutter-apk\app-armeabi-v7a-release.apk
-        #    build\app\outputs\flutter-apk\app-arm64-v8a-release.apk
-        #    build\app\outputs\flutter-apk\app-x86_64-release.apk
+        #    build/app/outputs/flutter-apk/app-armeabi-v7a-release-$GITHUB_REF_NAME.apk
+        #    build/app/outputs/flutter-apk/app-arm64-v8a-release-$GITHUB_REF_NAME.apk
+        #    build/app/outputs/flutter-apk/app-x86_64-release-$GITHUB_REF_NAME.apk
