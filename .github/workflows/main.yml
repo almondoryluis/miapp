@@ -13,6 +13,13 @@ jobs:
     name: Construir APK
     # Docs: https://github.com/actions/runner-images/#available-images
     runs-on: ubuntu-latest
+    permissions:
+      # Docs: https://github.com/softprops/action-gh-release#permissions
+      #       https://docs.github.com/es/actions/security-guides/automatic-token-authentication
+      #       https://github.com/ossf/scorecard/blob/main/docs/checks.md#token-permissions
+      # Conf: https://github.com/almondoryluis/miapp-flutter/settings/actions
+      contents: write
+
     steps:
       # 1. Clonar repositorio
       - uses: actions/checkout@v3
