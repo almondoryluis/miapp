@@ -1,6 +1,6 @@
 # miapp
 
-Aplicación de ejemplo para crear APK mediante GitHub Actions.
+Aplicación de ejemplo para crear una APK mediante GitHub Actions.
 
 ## Getting Started
 
