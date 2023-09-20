@@ -1,6 +1,6 @@
 # miapp
 
-Aplicación de ejemplo para crear una APK mediante GitHub Actions.
+Aplicación Flutter de ejemplo para crear un APK mediante GitHub Actions.
 
 ## Getting Started
 
