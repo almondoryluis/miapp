@@ -63,6 +63,7 @@ jobs:
       # 6. Publicar entrega
       - uses: softprops/action-gh-release@v1
         with:
+          body: Entrega de miapp ${{ github.ref_name }}
           files:
             build/app/outputs/flutter-apk/miapp-${{ github.ref_name }}.apk
         #  files: |
