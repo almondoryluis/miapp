@@ -3,8 +3,9 @@ on: push
 
 jobs: 
   build:
+    if: startsWith(github.ref, 'refs/tags/') # Docs: https://docs.github.com/en/actions/learn-github-actions/contexts
     name: Construir APK
-    runs-on: ubuntu-latest # Referencia: https://github.com/actions/runner-images/#available-images
+    runs-on: ubuntu-latest # Docs: https://github.com/actions/runner-images/#available-images
     steps:
       # 1. Clonar repositorio
       - uses: actions/checkout@v3
