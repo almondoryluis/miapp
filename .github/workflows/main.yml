@@ -33,7 +33,7 @@ jobs:
       # - run: flutter build apk --split-per-abi # construir un APK para cada ABI
 
       # Renombrar el APK
-      - run: mv build\app\outputs\flutter-apk\app-release.apk build\app\outputs\flutter-apk\miapp-flutter.apk
+      - run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/miapp-flutter.apk
 
       # Opcional: 
       # Construir el appbundle de la apk (para subir a Play Store)
